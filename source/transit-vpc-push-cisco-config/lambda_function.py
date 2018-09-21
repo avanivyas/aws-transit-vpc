@@ -278,6 +278,7 @@ def create_cisco_config(bucket_name, bucket_key, s3_url, bgp_asn, ssh):
         config_text.append('crypto isakmp profile isakmp-{}-{}'.format(vpn_connection_id,tunnelId))
         config_text.append('  local-address GigabitEthernet1')
         config_text.append('  match identity address {}'.format(vpn_gateway_tunnel_outside_address))
+        config_text.append('  rekey')
         config_text.append('  keyring keyring-{}-{}'.format(vpn_connection_id,tunnelId))
         config_text.append('exit')
         config_text.append('interface Tunnel{}'.format(tunnelId))
